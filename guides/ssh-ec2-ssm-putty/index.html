@@ -1,0 +1,115 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to SSH into an EC2 instance over SSM from Windows with PuTTY | SSMConnect</title><meta name="description" content="Step-by-step: use AWS Systems Manager Session Manager port forwarding to SSH into EC2 with PuTTY while port 22 stays closed. Includes fixes for common errors."><link rel="canonical" href="https://poonchezhian.github.io/guides/ssh-ec2-ssm-putty/"><meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0b1730"><link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article"><meta property="og:site_name" content="SSMConnect"><meta property="og:title" content="How to SSH into an EC2 instance over SSM from Windows with PuTTY | SSMConnect"><meta property="og:description" content="Step-by-step: use AWS Systems Manager Session Manager port forwarding to SSH into EC2 with PuTTY while port 22 stays closed. Includes fixes for common errors."><meta property="og:url" content="https://poonchezhian.github.io/guides/ssh-ec2-ssm-putty/"><meta property="og:image" content="https://poonchezhian.github.io/assets/social-preview.png"><meta property="og:image:width" content="1280"><meta property="og:image:height" content="640"><meta property="og:image:alt" content="SSMConnect: connect to AWS servers over SSM">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="How to SSH into an EC2 instance over SSM from Windows with PuTTY | SSMConnect"><meta name="twitter:description" content="Step-by-step: use AWS Systems Manager Session Manager port forwarding to SSH into EC2 with PuTTY while port 22 stays closed. Includes fixes for common errors."><meta name="twitter:image" content="https://poonchezhian.github.io/assets/social-preview.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap"><style>
+/* Layout: one calm column. Dark terminal pair is the single loud moment; everything else stays quiet. */
+:root{--bg:#f5f7fb;--surface:#ffffff;--ink:#0e1a2e;--muted:#4a5a73;--line:#d8e0ec;--accent:#b8520a;--accent-ink:#ffffff;--accent-soft:#fbeadb;--term:#0b1730;--term-ink:#dbe6fa;--term-dim:#8da2c4;--term-hot:#ffa31a;--term-ok:#5fd6a0;
+--font-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;--font-body:"Instrument Sans","Segoe UI",system-ui,sans-serif;--font-mono:"JetBrains Mono",ui-monospace,Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1224;--surface:#111c33;--ink:#e8eefb;--muted:#9db0cf;--line:#243455;--accent:#ffa31a;--accent-ink:#1a1100;--accent-soft:#2a2113;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a1224;--surface:#111c33;--ink:#e8eefb;--muted:#9db0cf;--line:#243455;--accent:#ffa31a;--accent-ink:#1a1100;--accent-soft:#2a2113;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 var(--font-body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin:0 auto}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+header.top{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between;padding-block:22px}
+.brand{font:700 22px/1 var(--font-display);color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.brand b{color:var(--accent)}
+nav.top{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:15px}
+nav.top a{color:var(--muted);text-decoration:none}
+nav.top a:hover{color:var(--ink);text-decoration:underline}
+.hero{padding-block:44px 28px}
+.eyebrow{font:600 13px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font:800 clamp(34px,6vw,60px)/1.05 var(--font-display);letter-spacing:-.025em;margin:16px 0 18px;max-width:17ch;text-wrap:balance}
+.lede{font-size:clamp(18px,2.2vw,21px);color:var(--muted);max-width:62ch;margin:0 0 26px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-block;padding:13px 22px;border-radius:10px;font:600 16px/1.2 var(--font-body);text-decoration:none;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{color:var(--accent);background:transparent}
+.btn.ghost:hover{background:var(--accent-soft)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin:22px 0 0;padding:0;list-style:none;font:500 14px/1.4 var(--font-mono);color:var(--muted)}
+.facts li::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:8px}
+section{padding-block:44px}
+h2{font:700 clamp(26px,3.6vw,36px)/1.15 var(--font-display);letter-spacing:-.015em;margin:0 0 14px;text-wrap:balance}
+h3{font:700 20px/1.3 var(--font-display);margin:0 0 6px}
+p{margin:0 0 14px}
+.sub{color:var(--muted);max-width:62ch}
+figure{margin:24px 0 0}
+figure img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line);box-shadow:0 18px 40px -22px rgba(8,16,40,.45)}
+figcaption{font-size:14px;color:var(--muted);margin-top:10px}
+.pair{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;margin-top:22px}
+.term{background:var(--term);color:var(--term-ink);border-radius:12px;padding:0;min-width:0;overflow:hidden}
+.term .bar{font:600 12px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--term-dim);padding:12px 16px;border-bottom:1px solid #1d2c4d}
+.term pre{margin:0;padding:16px;overflow-x:auto;font:14px/1.7 var(--font-mono);white-space:pre}
+.term .p{color:var(--term-hot)} .term .d{color:var(--term-dim)} .term .ok{color:var(--term-ok)}
+.term p{margin:0;padding:0 16px 16px;font-size:15px;color:var(--term-dim)}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:22px 0 0;padding:0;list-style:none}
+.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;min-width:0}
+.steps li::before{content:counter(s);display:block;font:800 34px/1 var(--font-display);color:var(--accent);margin-bottom:10px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:20px}
+.two>div{min-width:0}
+ul.tick{margin:0;padding:0;list-style:none}
+ul.tick li{padding-left:26px;position:relative;margin-bottom:10px}
+ul.tick li::before{content:"";position:absolute;left:2px;top:.62em;width:10px;height:6px;border-left:3px solid var(--accent);border-bottom:3px solid var(--accent);transform:rotate(-45deg)}
+.tablewrap{overflow-x:auto;margin-top:20px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:16px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 13px/1.2 var(--font-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td.us{background:var(--accent-soft);font-weight:600}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:0;margin-bottom:10px}
+summary{cursor:pointer;padding:16px 18px;font:600 18px/1.4 var(--font-display);list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:24px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{padding:0 18px 4px;color:var(--muted);margin:0 0 16px}
+.closing{background:var(--term);color:var(--term-ink);border-radius:16px;padding:34px;margin-block:20px 10px}
+.closing h2{color:#fff}.closing p{color:var(--term-dim);max-width:58ch}
+footer{border-top:1px solid var(--line);padding-block:30px 44px;color:var(--muted);font-size:15px}
+footer .row{display:flex;flex-wrap:wrap;gap:10px 26px;margin-bottom:12px}
+code.i{font:15px var(--font-mono);background:var(--accent-soft);padding:2px 6px;border-radius:5px;color:var(--ink)}
+.crumbs{font-size:14px;color:var(--muted);padding-top:6px}.crumbs a{color:var(--muted)}
+article h2{margin-top:34px;font-size:clamp(22px,3vw,28px)}
+article .term{margin:14px 0 18px}
+@media (max-width:820px){.pair,.steps,.two{grid-template-columns:1fr}.hero{padding-top:26px}.closing{padding:24px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "How to SSH into an EC2 instance over SSM from Windows with PuTTY", "author": {"@type": "Person", "name": "Poonchezhian Periasamy"}, "datePublished": "2026-10-21", "dateModified": "2026-10-21", "mainEntityOfPage": "https://poonchezhian.github.io/guides/ssh-ec2-ssm-putty/", "image": "https://poonchezhian.github.io/assets/social-preview.png"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SSMConnect", "item": "https://poonchezhian.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Guide: SSH into EC2 over SSM with PuTTY", "item": "https://poonchezhian.github.io/guides/ssh-ec2-ssm-putty/"}]}</script></head><body><div class="wrap"><header class="top"><a class="brand" href="../../index.html">SSM<b>Connect</b></a><nav class="top" aria-label="Main"><a href="../../index.html#how">How it works</a><a href="../../index.html#needs">Requirements</a><a href="../../index.html#linux">Linux</a><a href="../../guides/ssh-ec2-ssm-putty/index.html">Guide: PuTTY over SSM</a><a href="../../index.html#faq">FAQ</a><a href="https://github.com/poonchezhian/ssmconnect">GitHub</a></nav></header></div>
+<main class="wrap"><article>
+<p class="crumbs"><a href="../../index.html">SSMConnect</a> / Guides</p>
+<h1 style="max-width:22ch;font-size:clamp(30px,5vw,46px)">How to SSH into an EC2 instance over SSM from Windows with PuTTY</h1>
+<p class="lede">You can reach an EC2 server with port 22 closed by sending SSH through AWS Systems Manager Session Manager. This guide shows the manual way, step by step, so you know exactly what happens. The last section shows the shortcut.</p>
+
+<h2>Before you start</h2>
+<ul class="tick"><li>The instance runs the SSM Agent and has an IAM instance profile that allows Systems Manager (for example <code class="i">AmazonSSMManagedInstanceCore</code>).</li><li>You have the AWS CLI version 2 and the Session Manager plugin installed on your PC.</li><li>Your AWS identity is allowed to run <code class="i">ssm:StartSession</code> on that instance.</li><li>You have the key pair for the instance, converted to a <code class="i">.ppk</code> file for PuTTY (PuTTYgen does this).</li></ul>
+
+<h2>1. Sign in to AWS</h2>
+<p>If your company uses IAM Identity Center (AWS SSO), sign in with your profile name. A browser window opens for the company sign-in.</p>
+<div class="term"><div class="bar">Command prompt</div><pre><span class="p">&gt;</span> aws sso login --profile prod</pre></div>
+
+<h2>2. Check that the instance is ready</h2>
+<p>The instance must show as online in Systems Manager. If it is missing from the list, the agent or the role is the usual cause.</p>
+<div class="term"><div class="bar">Command prompt</div><pre><span class="p">&gt;</span> aws ssm describe-instance-information --profile prod ^
+    --query "InstanceInformationList[].[InstanceId,PingStatus,PlatformName]" --output table</pre></div>
+
+<h2>3. Start the tunnel</h2>
+<p>This forwards port 2222 on your PC to port 22 on the instance. Replace the instance ID with yours. Leave this window open for as long as you want the connection.</p>
+<div class="term"><div class="bar">Command prompt</div><pre><span class="p">&gt;</span> aws ssm start-session --profile prod --target i-0a1b2c3d4e5f67890 ^
+    --document-name AWS-StartPortForwardingSession ^
+    --parameters "portNumber=22,localPortNumber=2222"</pre><p>On success the window shows <span class="ok">Waiting for connections...</span></p></div>
+
+<h2>4. Connect with PuTTY</h2>
+<p>Open PuTTY and set Host Name to <code class="i">127.0.0.1</code> and Port to <code class="i">2222</code>, with the connection type set to SSH. Under Connection, SSH, Auth, Credentials, choose your <code class="i">.ppk</code> file. Click Open and log in with the user name for your image, such as <code class="i">ec2-user</code> on Amazon Linux or <code class="i">ubuntu</code> on Ubuntu.</p>
+<p>When you are done, close PuTTY and press Ctrl+C in the tunnel window. For a second server, use a different local port, for example 2223.</p>
+
+<h2>If something goes wrong</h2>
+<ul class="tick"><li><b>TargetNotConnected:</b> the SSM Agent is not running, the instance profile is missing, or the instance cannot reach the Systems Manager endpoints.</li><li><b>SessionManagerPlugin is not found:</b> install the Session Manager plugin and open a new command prompt.</li><li><b>Port already in use:</b> pick another local port, such as 2223.</li><li><b>PuTTY says the server refused the key:</b> check the user name and that the <code class="i">.ppk</code> matches the key pair on the instance.</li></ul>
+
+<h2>The shortcut</h2>
+<p>Steps 1 to 4 repeat for every server and every day. <a href="../../index.html">SSMConnect</a> signs you in, lists the servers that are ready, picks a free local port, starts the tunnel and saves the PuTTY session, so a connection becomes one click. It also does the same for WinSCP, MobaXterm and Remote Desktop. On Linux the same idea gives every server a short name, so <code class="i">ssh ssc-web-prod</code> just works.</p>
+<div class="cta" style="margin:18px 0 8px"><a class="btn primary" href="https://github.com/poonchezhian/ssmconnect/releases/latest/download/SSMConnect-Setup-x64.exe">Download SSMConnect for Windows</a><a class="btn ghost" href="https://github.com/poonchezhian/ssmconnect/releases/download/linux-latest/ssmconnect-linux-x86_64.bin">Download for Linux</a><a class="btn ghost" href="../../index.html">See how it works</a></div>
+<p class="sub" style="font-size:15px">Command lines use the Windows command prompt. In PowerShell, quote the parameters as shown. In a Linux or macOS shell, use a backslash instead of ^ to continue a line.</p>
+</article></main>
+<div class="wrap"><footer><div class="row"><a href="https://github.com/poonchezhian/ssmconnect">Source code</a><a href="https://github.com/poonchezhian/ssmconnect/releases">Releases</a><a href="https://github.com/poonchezhian/ssmconnect/wiki">Documentation</a><a href="https://github.com/poonchezhian/ssmconnect/issues/new/choose">Report a problem</a><a href="https://github.com/poonchezhian/ssmconnect/security/policy">Security policy</a></div><p>SSMConnect is free software under the Apache License 2.0, written by <a href="https://github.com/poonchezhian/ssmconnect">Poonchezhian Periasamy</a>. It is an independent project and is not affiliated with or endorsed by Amazon Web Services. AWS and Amazon EC2 are trademarks of Amazon.com, Inc. This site uses no cookies or tracking.</p></footer></div></body></html>
