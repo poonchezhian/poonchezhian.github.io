@@ -7,7 +7,7 @@ For the full list of pages in Markdown, see https://poonchezhian.github.io/sitem
 ## Pages
 
 - [SSMConnect home](https://poonchezhian.github.io/index.md): what it does, how it works, what a server needs, Linux install, safety notes and FAQ
-- [SSH into EC2 over SSM from Windows with PuTTY](https://poonchezhian.github.io/guides/ssh-ec2-ssm-putty/index.md): step-by-step manual setup, with fixes for common errors
+- [SSH into EC2 over SSM with SSMConnect](https://poonchezhian.github.io/guides/ssh-ec2-ssm-putty/index.md): step-by-step manual setup, with fixes for common errors
 
 ## Project
 

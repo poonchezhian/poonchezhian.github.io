@@ -2,7 +2,7 @@
 
 [SSMConnect](https://poonchezhian.github.io/) / Guides
 
-# How to SSH into an EC2 instance over SSM from Windows with PuTTY
+# SSH into EC2 over SSM with SSMConnect
 
 You can reach an EC2 server with port 22 closed by sending SSH through AWS Systems Manager Session Manager. This guide shows the manual way, step by step, so you know exactly what happens. The last section shows the shortcut.
 
