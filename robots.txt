@@ -1,3 +1,5 @@
+# Markdown versions of every page are listed at https://poonchezhian.github.io/sitemap.md
+# A short guide for language models is at https://poonchezhian.github.io/llms.txt
 User-agent: *
 Allow: /
 
