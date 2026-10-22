@@ -2,5 +2,6 @@
 # A short guide for language models is at https://poonchezhian.github.io/llms.txt
 User-agent: *
 Allow: /
+Disallow: /search/
 
 Sitemap: https://poonchezhian.github.io/sitemap.xml

@@ -1,8 +1,10 @@
-<!-- Markdown version of https://poonchezhian.github.io/ . Updated 2026-10-21. The HTML page is the canonical version. -->
+<!-- Markdown version of https://poonchezhian.github.io/ . Updated 2026-10-22. The HTML page is the canonical version. -->
 
 Free · Open source · Windows and Linux
 
-# Connect to your AWS servers over SSM. Leave port 22 closed.
+# Copy files between AWS servers. Port 22 stays closed.
+
+SSMConnect gives you two panes and a Copy button for moving files from one server to another through AWS Systems Manager. No S3 bucket, no scp, no bastion host. See [file transfer](https://poonchezhian.github.io/file-transfer/).
 
 SSMConnect finds your EC2 servers and opens secure tunnels through AWS Systems Manager Session Manager. On Windows it sets up PuTTY, WinSCP, MobaXterm and Remote Desktop for you. On Linux it gives every server a window with a Connect button and a short ssh name. You sign in, pick a server and connect. No bastion host, no VPN, no commands to remember.
 

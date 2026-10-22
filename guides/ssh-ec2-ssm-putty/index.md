@@ -1,6 +1,4 @@
-<!-- Markdown version of https://poonchezhian.github.io/guides/ssh-ec2-ssm-putty/ . Updated 2026-10-21. The HTML page is the canonical version. -->
-
-[SSMConnect](https://poonchezhian.github.io/) / Guides
+<!-- Markdown version of https://poonchezhian.github.io/guides/ssh-ec2-ssm-putty/ . Updated 2026-10-22. The HTML page is the canonical version. -->
 
 # How to SSH into an EC2 instance over SSM from Windows with PuTTY
 
@@ -68,3 +66,6 @@ Steps 1 to 4 repeat for every server and every day. [SSMConnect](https://poonche
 [Download SSMConnect for Windows](https://github.com/poonchezhian/ssmconnect/releases/latest/download/SSMConnect-Setup-x64.exe) · [Download for Linux](https://github.com/poonchezhian/ssmconnect/releases/download/linux-latest/ssmconnect-linux-x86_64.bin) · [See how it works](https://poonchezhian.github.io/)
 
 Command lines use the Windows command prompt. In PowerShell, quote the parameters as shown. In a Linux or macOS shell, use a backslash instead of ^ to continue a line.
+
+
+Next: [copy files between two servers the easy way](/file-transfer/), or read [SSM port forwarding explained](/blog/ssm-port-forwarding-explained/).

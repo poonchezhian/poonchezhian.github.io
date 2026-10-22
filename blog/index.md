@@ -1,0 +1,8 @@
+<!-- Markdown version of https://poonchezhian.github.io/blog/ . Updated 2026-10-22. The HTML page is the canonical version. -->
+
+# The SSMConnect blog
+
+- 2026-10-22: [How to copy files between EC2 servers when port 22 is closed](https://poonchezhian.github.io/blog/copy-files-between-ec2-servers-port-22-closed/): Four ways to move files from one EC2 server to another when SSH is closed and you only have AWS Systems Manager: S3, manual port forwarding, rsync, and a two-pane window in SSMConnect.
+- 2026-10-22: [What is new in SSMConnect 2.0: connections that stay open and a calmer dashboard](https://poonchezhian.github.io/blog/ssmconnect-2-0-whats-new/): A tour of SSMConnect 2.0 to 2.0.5 for Windows: connect-all with keep-alive, login checks before PuTTY opens, usage bars, a file window that matches the dashboard, and a scrolling grid for large fleets.
+- 2026-10-21: [Is it safe to copy files between servers through your PC?](https://poonchezhian.github.io/blog/is-it-safe-to-copy-files-through-your-pc/): How SSMConnect's file transfer is built: SSH inside the SSM tunnel, streaming through memory, no root, a private sudo helper, and the limits you should know about.
+- 2026-10-20: [SSM port forwarding explained for developers](https://poonchezhian.github.io/blog/ssm-port-forwarding-explained/): What AWS Systems Manager port forwarding does, why your tools connect to 127.0.0.1, and how one tunnel per server lets PuTTY, WinSCP and Remote Desktop work with no open ports.

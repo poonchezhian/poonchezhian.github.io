@@ -1,15 +1,28 @@
 # SSMConnect
 
-> SSMConnect is a free, open-source app for Windows and Linux. It finds AWS EC2 servers and opens SSH and Remote Desktop connections through AWS Systems Manager Session Manager, so inbound port 22 stays closed and no bastion host is needed.
+> SSMConnect is a free, open-source app for Windows and Linux. Its flagship feature is copying files between AWS servers with two panes and a Copy button through AWS Systems Manager, so inbound port 22 stays closed. It also finds EC2 servers, opens SSH and Remote Desktop connections over Session Manager and sets up PuTTY, WinSCP and MobaXterm.
 
-For the full list of pages in Markdown, see https://poonchezhian.github.io/sitemap.md. For a plain answer to what SSMConnect is and how to install it, see https://poonchezhian.github.io/index.md.
+For the full list of pages in Markdown, see https://poonchezhian.github.io/sitemap.md.
 
-## Pages
+## Start here
 
-- [SSMConnect home](https://poonchezhian.github.io/index.md): what it does, how it works, what a server needs, Linux install, safety notes and FAQ
-- [SSH into EC2 over SSM from Windows with PuTTY](https://poonchezhian.github.io/guides/ssh-ec2-ssm-putty/index.md): step-by-step manual setup, with fixes for common errors
+- [Home](https://poonchezhian.github.io/index.md): what it does, how it works, requirements, safety and FAQ
+- [Copy files between servers](https://poonchezhian.github.io/file-transfer/index.md): the two-pane file window, how the data travels, limits
+- [Documentation](https://poonchezhian.github.io/docs/index.md): setup, dashboard, accounts, troubleshooting, security, Linux
+- [Blog](https://poonchezhian.github.io/blog/index.md): articles and release notes
+
+## Blog
+
+- [How to copy files between EC2 servers when port 22 is closed](https://poonchezhian.github.io/blog/copy-files-between-ec2-servers-port-22-closed/index.md): Four ways to move files from one EC2 server to another when SSH is closed and you only have AWS Systems Manager: S3, manual port forwarding, rsync, and a two-pane window in SSMConnect.
+- [What is new in SSMConnect 2.0: connections that stay open and a calmer dashboard](https://poonchezhian.github.io/blog/ssmconnect-2-0-whats-new/index.md): A tour of SSMConnect 2.0 to 2.0.5 for Windows: connect-all with keep-alive, login checks before PuTTY opens, usage bars, a file window that matches the dashboard, and a scrolling grid for large fleets.
+- [Is it safe to copy files between servers through your PC?](https://poonchezhian.github.io/blog/is-it-safe-to-copy-files-through-your-pc/index.md): How SSMConnect's file transfer is built: SSH inside the SSM tunnel, streaming through memory, no root, a private sudo helper, and the limits you should know about.
+- [SSM port forwarding explained for developers](https://poonchezhian.github.io/blog/ssm-port-forwarding-explained/index.md): What AWS Systems Manager port forwarding does, why your tools connect to 127.0.0.1, and how one tunnel per server lets PuTTY, WinSCP and Remote Desktop work with no open ports.
+
+## Guides
+
+- [How to SSH into an EC2 instance over SSM from Windows with PuTTY](https://poonchezhian.github.io/guides/ssh-ec2-ssm-putty/index.md): step-by-step manual setup with fixes for common errors
 
 ## Project
 
 - [Source code and downloads](https://github.com/poonchezhian/ssmconnect): Apache-2.0, Windows installer and signed Linux packages
-- [Documentation](https://github.com/poonchezhian/ssmconnect/wiki): setup and troubleshooting
+- [Wiki](https://github.com/poonchezhian/ssmconnect/wiki): the same documentation on GitHub

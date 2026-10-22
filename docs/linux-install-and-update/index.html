@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Install and update on Linux | SSMConnect docs</title><meta name="description" content="Which SSMConnect file fits your Linux distribution, how to check the OpenPGP signature, install, update and remove."><link rel="canonical" href="https://poonchezhian.github.io/docs/linux-install-and-update/"><meta name="robots" content="index,follow,max-image-preview:large"><meta name="theme-color" content="#0b1730"><link rel="icon" href="/favicon.ico" sizes="32x32"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="alternate" type="text/markdown" href="/docs/linux-install-and-update/index.md"><link rel="alternate" type="application/rss+xml" title="SSMConnect blog" href="/blog/feed.xml"><meta property="og:type" content="article"><meta property="og:site_name" content="SSMConnect"><meta property="og:title" content="Install and update on Linux | SSMConnect docs"><meta property="og:description" content="Which SSMConnect file fits your Linux distribution, how to check the OpenPGP signature, install, update and remove."><meta property="og:url" content="https://poonchezhian.github.io/docs/linux-install-and-update/"><meta property="og:image" content="https://poonchezhian.github.io/assets/social-preview.png"><meta property="og:image:width" content="1280"><meta property="og:image:height" content="640"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Install and update on Linux | SSMConnect docs"><meta name="twitter:description" content="Which SSMConnect file fits your Linux distribution, how to check the OpenPGP signature, install, update and remove."><meta name="twitter:image" content="https://poonchezhian.github.io/assets/social-preview.png"><meta property="article:published_time" content="2026-10-22"><meta property="article:modified_time" content="2026-10-22"><meta property="article:author" content="Poonchezhian Periasamy"><link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/assets/site.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://poonchezhian.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://poonchezhian.github.io/docs/"}, {"@type": "ListItem", "position": 3, "name": "Install and update on Linux", "item": "https://poonchezhian.github.io/docs/linux-install-and-update/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Install and update on Linux", "description": "Which SSMConnect file fits your Linux distribution, how to check the OpenPGP signature, install, update and remove.", "url": "https://poonchezhian.github.io/docs/linux-install-and-update/", "dateModified": "2026-10-22", "author": {"@type": "Person", "name": "Poonchezhian Periasamy", "url": "https://github.com/poonchezhian"}, "publisher": {"@type": "Organization", "name": "SSMConnect", "url": "https://poonchezhian.github.io/", "logo": {"@type": "ImageObject", "url": "https://poonchezhian.github.io/assets/logo-256.png"}}, "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "SSMConnect", "url": "https://poonchezhian.github.io/"}}</script></head><body><div class="wrap"><header class="top"><a class="brand" href="/"><img class="logo" src="/assets/logo-64.png" width="32" height="32" alt=""><span>SSM<b>Connect</b></span></a><nav class="top" aria-label="Main"><a href="/file-transfer/">File transfer</a><a href="/docs/" class="on" aria-current="page">Docs</a><a href="/blog/">Blog</a><a href="/guides/">Guides</a><a href="https://github.com/poonchezhian/ssmconnect">GitHub</a><a class="btn primary sm" href="https://github.com/poonchezhian/ssmconnect/releases/latest/download/SSMConnect-Setup-x64.exe">Download</a></nav><form class="search" action="/search/" role="search"><input type="search" name="q" placeholder="Search the site" aria-label="Search the site"></form></header></div><main class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/docs/">Documentation</a> / <span aria-current="page">Install and update on Linux</span></nav><div class="docs"><aside aria-label="Documentation"><nav><h4>Get started</h4><ul><li><a href="/docs/getting-started/">Getting started with SSMConnect on Windows</a></li><li><a href="/docs/file-transfer/">Copy files between servers</a></li><li><a href="/docs/dashboard-guide/">Dashboard guide</a></li></ul><h4>Accounts and servers</h4><ul><li><a href="/docs/aws-accounts-and-organizations/">AWS accounts and organizations</a></li><li><a href="/docs/server-types-and-tags/">Server types and tags</a></li></ul><h4>Help and safety</h4><ul><li><a href="/docs/troubleshooting/">Troubleshooting</a></li><li><a href="/docs/faq/">Frequently asked questions</a></li><li><a href="/docs/security/">Security</a></li><li><a href="/docs/for-it-teams/">For IT teams</a></li></ul><h4>Linux edition</h4><ul><li><a href="/docs/linux-edition/">SSMConnect for Linux</a></li><li><a href="/docs/linux-install-and-update/" class="on" aria-current="page">Install and update on Linux</a></li><li><a href="/docs/linux-release-notes/">Linux release notes</a></li></ul><h4>Reference</h4><ul><li><a href="/docs/whats-new/">What is new in SSMConnect for Windows</a></li></ul></nav></aside><article><div class="eyebrow">Linux edition</div><h1>Install and update on Linux</h1><p class="meta"><span>Updated 2026-10-22</span><span>6 min read</span><span><a href="https://github.com/poonchezhian/ssmconnect/wiki/Linux-Install-and-Update">Also on the GitHub wiki</a></span></p><nav class="toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#which-file-is-for-my-system">Which file is for my system?</a></li><li><a href="#install">Install</a></li><li><a href="#check-the-signature-before-you-run-it">Check the signature before you run it</a></li><li><a href="#update">Update</a></li><li><a href="#remove">Remove</a></li><li><a href="#where-things-live">Where things live</a></li></ol></nav><h2 id="which-file-is-for-my-system">Which file is for my system?</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Your system (vendor-supported releases, checked 2026-10)</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fedora 43 and 44</td>
+<td>the <code>.rpm</code></td>
+</tr>
+<tr>
+<td>RHEL, AlmaLinux, Rocky Linux 10</td>
+<td>the <code>.rpm</code></td>
+</tr>
+<tr>
+<td>openSUSE Leap 16.0 and Tumbleweed</td>
+<td>the <code>.rpm</code></td>
+</tr>
+<tr>
+<td>Ubuntu 24.04 and 26.04, Linux Mint 22</td>
+<td>the <code>.deb</code></td>
+</tr>
+<tr>
+<td>Debian 13</td>
+<td>the <code>.deb</code></td>
+</tr>
+<tr>
+<td>RHEL, AlmaLinux, Rocky Linux 8 and 9</td>
+<td>the Flatpak</td>
+</tr>
+<tr>
+<td>Ubuntu 22.04, Linux Mint 21</td>
+<td>the Flatpak</td>
+</tr>
+<tr>
+<td>Debian 12</td>
+<td>the Flatpak</td>
+</tr>
+</tbody>
+</table></div>
+<p>The native packages and the <code>.bin</code> installer need GTK 4.12+, libadwaita 1.5+ and glibc 2.39+, which the first five rows ship. The older releases in the last three rows cannot run them, so the Flatpak brings its own GTK and libadwaita (the GNOME runtime). Releases a vendor no longer supports (for example Fedora 42, Debian 11, openSUSE Leap 15.6) are not covered.</p>
+<p><strong>Flatpak</strong> (needs the <code>flatpak</code> package, which is in the standard repositories of all three families; on Ubuntu 22.04 and Mint 21 it is already there or one <code>sudo apt install flatpak</code> away):</p>
+<pre><code>flatpak install --user https://poonchezhian.github.io/ssmconnect/ssmconnect.flatpakref
+flatpak run io.github.poonchezhian.SSMConnect
+</code></pre>
+<p><code>flatpak update</code> brings new versions. The Flatpak keeps its own settings (<code>~/.var/app/io.github.poonchezhian.SSMConnect</code>), reads your <code>~/.aws</code> and <code>~/.ssh</code>, and opens the terminal, file manager, Remote Desktop client and ssh on your desktop. A single-file copy, <code>ssmconnect-linux-x86_64.flatpak</code> (with <code>.asc</code> signature), is on every release page; install it with <code>flatpak install --user ssmconnect-linux-x86_64.flatpak</code>.</p>
+<h2 id="install">Install</h2>
+<ol>
+<li>Download <code>ssmconnect-linux-x86_64.bin</code> and its <code>.asc</code> signature from the <a href="https://github.com/poonchezhian/ssmconnect/releases/tag/linux-latest">newest Linux release</a>.</li>
+<li><a href="#check-the-signature-before-you-run-it">Check the signature</a>.</li>
+<li>Run it: open a terminal in the download folder and type <code>sh ./ssmconnect-linux-x86_64.bin</code> (or right-click the file, make it executable, and double-click it).</li>
+</ol>
+<p>The installer window has four steps:</p>
+<ol>
+<li><strong>Welcome.</strong> Shows what it is going to do and the licence. If SSMConnect is already installed it says so and offers <em>Update</em> or <em>Remove</em>.</li>
+<li><strong>Requirements.</strong> Fetched from their own sources <em>before</em> SSMConnect is installed: OpenSSH (and optionally Remmina for Windows servers) from your distribution's repositories (it asks for your password), and the AWS CLI and Session Manager plugin from Amazon with Amazon's signature checked. Nothing third-party is carried inside the installer.</li>
+<li><strong>Where to install.</strong> <em>Just for me</em> (<code>~/.local</code>, no password) or <em>For all users</em> (<code>/usr/local</code>, asks for your password).</li>
+<li><strong>Done.</strong> Open SSMConnect from your application menu. The first run guides you through adding your AWS account.</li>
+</ol>
+<p>No display (for example over ssh)? The same questions are asked in the terminal. Useful options: <code>--text</code>, <code>--yes</code> (accept the defaults), <code>--system</code> (all users), <code>--prefix DIR</code>, <code>--update-only</code>.</p>
+<p>If GTK 4 or libadwaita are missing, the file itself offers to install them from your distribution before the window opens.</p>
+<p>The same file names always point at the newest version: <code>ssmconnect-linux-x86_64.bin</code>, <code>ssmconnect-linux-x86_64.rpm</code> and <code>ssmconnect-linux-amd64.deb</code> (each with a <code>.asc</code> signature) under <a href="https://github.com/poonchezhian/ssmconnect/releases/tag/linux-latest">releases/download/linux-latest</a>. Older versions stay on the <a href="https://github.com/poonchezhian/ssmconnect/releases">Releases page</a>.</p>
+<h2 id="check-the-signature-before-you-run-it">Check the signature before you run it</h2>
+<p>Every file is signed with the <strong>SSMConnect Linux Releases</strong> key:</p>
+<pre><code>Fingerprint  FF9F 45E6 4711 7103 89B3  F1FC 7483 B1F8 DBE4 A803
+Key ID       7483B1F8DBE4A803   (ed25519, expires 2028-10-15)
+</code></pre>
+<pre><code>curl -LO https://github.com/poonchezhian/ssmconnect/releases/download/linux-latest/ssmconnect-linux-x86_64.bin
+curl -LO https://github.com/poonchezhian/ssmconnect/releases/download/linux-latest/ssmconnect-linux-x86_64.bin.asc
+curl -LO https://raw.githubusercontent.com/poonchezhian/ssmconnect/linux/linux/SIGNING-KEY.asc
+
+gpg --import SIGNING-KEY.asc
+gpg --fingerprint 7483B1F8DBE4A803
+gpg --verify ssmconnect-linux-x86_64.bin.asc ssmconnect-linux-x86_64.bin
+</code></pre>
+<ul>
+<li>The fingerprint that <code>gpg --fingerprint</code> prints must match the one above, character for character.</li>
+<li>You want to see <strong>Good signature from "SSMConnect Linux Releases"</strong>. The warning <em>"This key is not certified with a trusted signature"</em> is normal: it only means you have not personally certified the key.</li>
+<li><strong>BAD signature</strong>, or a different fingerprint: do not run the file, and <a href="https://github.com/poonchezhian/ssmconnect/issues">report it</a>.</li>
+<li><code>SHA256SUMS.txt</code> (with its own <code>.asc</code>) lists the checksums of all files: <code>sha256sum -c SHA256SUMS.txt</code>.</li>
+</ul>
+<p>The installer also verifies what it downloads for you: the AWS CLI and the Session Manager plugin are checked against Amazon's own signing keys, which are built into SSMConnect and pinned by fingerprint. A download that does not match is refused.</p>
+<h2 id="update">Update</h2>
+<p>Run the newer <code>.bin</code>. It finds the installation, updates it <strong>in place</strong> and keeps your servers, accounts and settings (a copy of your saved servers is saved first, as <code>config.json.before-update-from-&lt;version&gt;</code>). If SSMConnect is running it keeps using the old version until you close and open it again.</p>
+<ul>
+<li><code>--update-only</code> does nothing if SSMConnect is not installed.</li>
+<li>Going back to an older version needs an explicit confirmation.</li>
+<li>An install made by a package manager (<code>dnf</code>, <code>apt</code>) is left to that package manager.</li>
+<li><strong>File &gt; Preferences</strong> can check for new versions once a day and tell you when one exists.</li>
+<li><strong>Installed from the <code>.rpm</code> or <code>.deb</code>?</strong> The package adds the SSMConnect update repository (a signed repository on GitHub Pages) and its key, so new versions arrive with your system's normal updates: <code>sudo dnf upgrade</code> (Fedora, RHEL 10, openSUSE Tumbleweed) or <code>sudo apt update &amp;&amp; sudo apt upgrade</code> (Debian, Ubuntu), or your software centre. To stop getting updates from it, set <code>enabled=0</code> in <code>/etc/yum.repos.d/ssmconnect.repo</code> or <code>Enabled: no</code> in <code>/etc/apt/sources.list.d/ssmconnect.sources</code>. To add it before installing, see https://poonchezhian.github.io/ssmconnect/.</li>
+<li><strong>Help &gt; Check for updates</strong>, then <strong>Update now</strong>, installs the new version for you: SSMConnect downloads the installer, checks its signature and checksum, closes, updates itself (your servers and settings are kept) and opens again. This works for a copy installed by the installer in your own folder; for a package-manager or all-users install it opens the download page instead.</li>
+</ul>
+<h2 id="remove">Remove</h2>
+<p>Run the installer again and choose <strong>Remove SSMConnect…</strong>, or <code>ssmconnect uninstall</code> (add <code>--prefix /usr/local</code> if you installed for all users). <strong>Your saved servers, settings and log are kept</strong> unless you tick <em>Also delete my saved servers, settings and log</em> (<code>--remove-settings</code>). The AWS tools SSMConnect downloaded are kept unless you tick <em>Also remove the AWS CLI and Session Manager plugin…</em> (<code>--remove-tools</code>). Your <code>~/.aws</code> and your own ssh hosts are never touched.</p>
+<h2 id="where-things-live">Where things live</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>What</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Settings and saved servers</td>
+<td><code>~/.config/ssmconnect/</code></td>
+</tr>
+<tr>
+<td>Log and live status</td>
+<td><code>~/.local/state/ssmconnect/</code></td>
+</tr>
+<tr>
+<td>AWS tools downloaded by SSMConnect</td>
+<td><code>~/.local/share/ssmconnect/</code></td>
+</tr>
+<tr>
+<td>The program (just for me)</td>
+<td><code>~/.local/bin/ssmconnect</code></td>
+</tr>
+<tr>
+<td>ssh names (<code>ssh ssc-…</code>)</td>
+<td><code>~/.ssh/ssmconnect.conf</code>, loaded by one line in <code>~/.ssh/config</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>See also <a href="/docs/linux-edition/">Linux Edition</a> and <a href="/docs/troubleshooting/">Troubleshooting</a>.</p><div class="pn"><a href="/docs/linux-edition/"><small>Previous</small>SSMConnect for Linux</a><a class="next" href="/docs/linux-release-notes/"><small>Next</small>Linux release notes</a></div></article></div></main><div class="wrap"><footer><div class="cols"><div><h4>SSMConnect</h4><a href="/">Home</a><a href="/file-transfer/">Copy files between servers</a><a href="https://github.com/poonchezhian/ssmconnect/releases/latest/download/SSMConnect-Setup-x64.exe">Download for Windows</a><a href="https://github.com/poonchezhian/ssmconnect/releases/download/linux-latest/ssmconnect-linux-x86_64.bin">Download for Linux</a><a href="https://github.com/poonchezhian/ssmconnect/releases">Releases</a></div><div><h4>Learn</h4><a href="/docs/">Documentation</a><a href="/blog/">Blog</a><a href="/guides/">Guides</a><a href="/docs/whats-new/">What is new</a><a href="/docs/faq/">FAQ</a></div><div><h4>Project</h4><a href="https://github.com/poonchezhian/ssmconnect">Source code</a><a href="https://github.com/poonchezhian/ssmconnect/issues/new/choose">Report a problem</a><a href="https://github.com/poonchezhian/ssmconnect/security/policy">Security policy</a><a href="/blog/feed.xml">RSS feed</a><a href="/sitemap.md">Sitemap</a></div></div><div class="spons"><span>Find SSMConnect useful? You can support its development.</span> <iframe src="https://github.com/sponsors/poonchezhian/button" title="Sponsor poonchezhian" height="32" width="114" style="border:0;border-radius:6px" loading="lazy"></iframe></div><p>SSMConnect is free software under the Apache License 2.0, written by <a href="https://github.com/poonchezhian/ssmconnect">Poonchezhian Periasamy</a>. It is an independent project and is not affiliated with or endorsed by Amazon Web Services. AWS and Amazon EC2 are trademarks of Amazon.com, Inc. This site sets no cookies and has no tracking of its own. The Sponsor button is loaded from GitHub.</p></footer></div><script src="/assets/site.js" defer></script></body></html>
