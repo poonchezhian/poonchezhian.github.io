@@ -143,4 +143,10 @@ footer .cols a{display:block;color:var(--muted);text-decoration:none;padding:3px
 .arch details{margin:8px 0;border:0;padding:0}.arch details>summary{font:700 18px var(--font-display);cursor:pointer;padding:10px 0;border-top:1px solid var(--line)}
 .latest{border-top:4px solid var(--accent);padding-top:6px}.latest .eyebrow{margin-top:14px}.latest h2.pt{font-size:clamp(28px,4vw,40px);margin:4px 0 8px}.latest h2.pt a{color:var(--ink);text-decoration:none}
 .postnav{display:flex;justify-content:space-between;gap:16px;margin:30px 0;flex-wrap:wrap}.postnav a{display:block;max-width:48%;padding:12px 16px;border:1px solid var(--line);border-radius:10px;text-decoration:none;font-weight:600}.postnav small{display:block;color:var(--muted);font:500 12px var(--font-mono);text-transform:uppercase;margin-bottom:2px}
+
+.blogcols{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:44px;align-items:start}
+.blogcols aside.earlier{position:sticky;top:18px;max-height:calc(100vh - 36px);overflow:auto;padding-top:22px}
+.blogcols aside.earlier h2{font-size:20px;margin:0 0 4px}.blogcols aside.earlier .arch li{flex-direction:column;gap:1px;padding:9px 0}.blogcols aside.earlier .arch li time{flex:none}.blogcols aside.earlier .arch li a{font-size:15px;line-height:1.35}
+.blogcols aside.earlier p{font-size:14px}
+@media (max-width:900px){.blogcols{grid-template-columns:1fr;gap:10px}.blogcols aside.earlier{position:static;max-height:none;overflow:visible}}
 @media (max-width:700px){.postnav a{max-width:100%}.arch li{flex-direction:column;gap:2px}}
