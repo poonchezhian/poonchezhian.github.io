@@ -4,13 +4,15 @@ Every public page on poonchezhian.github.io, with its HTML and Markdown versions
 
 | Page | HTML | Markdown |
 |---|---|---|
-| SSMConnect: copy files between AWS servers over SSM, port 22 closed | https://poonchezhian.github.io/ | https://poonchezhian.github.io/index.md |
-| SSMConnect blog: AWS Systems Manager, file transfer and release notes | https://poonchezhian.github.io/blog/ | https://poonchezhian.github.io/blog/index.md |
+| SSMConnect: connect to AWS servers over SSM with port 22 closed | https://poonchezhian.github.io/ | https://poonchezhian.github.io/index.md |
+| About SSMConnect: connect to AWS servers over SSM with port 22 closed | https://poonchezhian.github.io/about/ | https://poonchezhian.github.io/about/index.md |
+| SSMConnect blog: connect to AWS servers over Systems Manager | https://poonchezhian.github.io/blog/ | https://poonchezhian.github.io/blog/index.md |
+| Connect to an EC2 server over SSM without opening port 22 | SSMConnect blog | https://poonchezhian.github.io/blog/connect-to-ec2-over-ssm-without-port-22/ | https://poonchezhian.github.io/blog/connect-to-ec2-over-ssm-without-port-22/index.md |
 | How to copy files between EC2 servers when port 22 is closed | SSMConnect blog | https://poonchezhian.github.io/blog/copy-files-between-ec2-servers-port-22-closed/ | https://poonchezhian.github.io/blog/copy-files-between-ec2-servers-port-22-closed/index.md |
 | Is it safe to copy files between servers through your PC? | SSMConnect blog | https://poonchezhian.github.io/blog/is-it-safe-to-copy-files-through-your-pc/ | https://poonchezhian.github.io/blog/is-it-safe-to-copy-files-through-your-pc/index.md |
 | SSM port forwarding explained for developers | SSMConnect blog | https://poonchezhian.github.io/blog/ssm-port-forwarding-explained/ | https://poonchezhian.github.io/blog/ssm-port-forwarding-explained/index.md |
 | What is new in SSMConnect 2.0: connections that stay open and a calmer dashboard | SSMConnect blog | https://poonchezhian.github.io/blog/ssmconnect-2-0-whats-new/ | https://poonchezhian.github.io/blog/ssmconnect-2-0-whats-new/index.md |
-| SSMConnect documentation: setup, file transfer, dashboard and troubleshooting | https://poonchezhian.github.io/docs/ | https://poonchezhian.github.io/docs/index.md |
+| SSMConnect documentation: connect to AWS servers over SSM, dashboard and troubleshooting | https://poonchezhian.github.io/docs/ | https://poonchezhian.github.io/docs/index.md |
 | AWS accounts and organizations | SSMConnect docs | https://poonchezhian.github.io/docs/aws-accounts-and-organizations/ | https://poonchezhian.github.io/docs/aws-accounts-and-organizations/index.md |
 | Dashboard guide | SSMConnect docs | https://poonchezhian.github.io/docs/dashboard-guide/ | https://poonchezhian.github.io/docs/dashboard-guide/index.md |
 | Frequently asked questions | SSMConnect docs | https://poonchezhian.github.io/docs/faq/ | https://poonchezhian.github.io/docs/faq/index.md |
